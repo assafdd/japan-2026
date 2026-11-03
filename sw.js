@@ -1,9 +1,9 @@
-// Keeps the app on the phone: answers from the saved copy, refreshes it in the background when online.
-const CACHE = 'japan-v3';
+// Keeps the app on the phone. Online: loads the latest version (and saves it). Offline or slow: uses the saved copy.
+const CACHE = 'japan-v4';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png?v=2', 'icon-192.png?v=2', 'icon-512.png?v=2'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES.map(f => new Request(f, {cache: 'reload'})))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -17,12 +17,14 @@ self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
   const key = e.request.mode === 'navigate' ? './' : e.request;
   e.respondWith(caches.open(CACHE).then(async cache => {
-    const saved = await cache.match(key, {ignoreSearch: true});
-    const fresh = fetch(e.request).then(res => {
+    const saved = await cache.match(key, {ignoreSearch: e.request.mode === 'navigate'});
+    const fresh = fetch(e.request, {cache: 'no-cache'}).then(res => {
       if (res.ok) cache.put(key, res.clone());
       return res;
-    }).catch(() => saved);
-    if (saved) { e.waitUntil(fresh); return saved; }
-    return fresh;
+    });
+    if (!saved) return fresh;
+    // Give the network 4 seconds; otherwise show the saved copy right away.
+    const timeout = new Promise(r => setTimeout(() => r(saved), 4000));
+    return Promise.race([fresh.catch(() => saved), timeout]);
   }));
 });

@@ -969,5 +969,5 @@ setInterval(() => { if (state.tab === 'today' || state.day) { const y = window.s
 })();
 </script>
 
-<script>if('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));</script>
+<script>if('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js', {updateViaCache: 'none'}).catch(() => {}));</script>
 </body></html>

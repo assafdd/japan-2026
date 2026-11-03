@@ -1,6 +1,6 @@
 // Keeps the app on the phone. Online: loads the latest version (and saves it). Offline or slow: uses the saved copy.
-const CACHE = 'japan-v4';
-const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png?v=2', 'icon-192.png?v=2', 'icon-512.png?v=2'];
+const CACHE = 'japan-v5';
+const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png?v=3', 'icon-192.png?v=3', 'icon-512.png?v=3'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES.map(f => new Request(f, {cache: 'reload'})))).then(() => self.skipWaiting()));

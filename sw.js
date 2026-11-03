@@ -1,6 +1,6 @@
 // Keeps the app on the phone: answers from the saved copy, refreshes it in the background when online.
-const CACHE = 'japan-v1';
-const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
+const CACHE = 'japan-v2';
+const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png?v=2', 'icon-192.png?v=2', 'icon-512.png?v=2'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));

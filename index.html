@@ -329,6 +329,24 @@ details.card p{margin:10px 0 0}
 .src{font-size:12px;color:var(--muted);text-decoration:underline;text-underline-offset:2px;margin-inline-start:4px}
 .prem .food:last-child{border-bottom:0}
 .prem .when{font-size:12px;font-weight:800;color:var(--muted)}
+
+/* full day plan */
+.full{display:flex;flex-direction:column;gap:12px}
+.full .intro{margin:0;font-size:16px}
+.stop{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;border-inline-start:4px solid var(--c)}
+.stop .when{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:13px;font-weight:800;color:var(--c)}
+.stop .when .t{direction:ltr;font-variant-numeric:tabular-nums}
+.stop .when .dur{color:var(--muted);font-weight:700}
+.stop h3{font-size:18px}
+.stop .how{font-size:14px;background:var(--soft);border-radius:10px;padding:8px 10px;margin:0}
+.stop .how b{color:var(--c)}
+.stop .story{margin:0;line-height:1.65}
+.stop .lbl{font-size:12px;font-weight:800;color:var(--c);letter-spacing:.04em;margin-top:2px}
+.stop ul{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:5px}
+.stop li{font-size:15px}
+.stop .tips li{color:var(--ink);opacity:.85}
+.stop .go{align-self:flex-start;font-size:13px;font-weight:800;text-decoration:none;color:var(--c);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.sumcard .eyebrow{margin-bottom:4px}
 @media (prefers-reduced-motion: no-preference){ section.view{animation:fade .18s ease-out} @keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}} }
 body.all nav.tabs,body.all .pager,body.all .viewer{display:none!important} body.all section.view{animation:none} body.all section.view+section.view{break-before:page} body.all header.top{position:static} body.all .wrap{padding-bottom:16px}
 </style>
@@ -615,6 +633,47 @@ const DRIVES = [
  ['12.11','טאקאיאמה → שירקאווה־גו → קנזאווה','2.5–3.5 ש׳'],
  ['14.11','קנזאווה → קיוטו','3.5–4.5 ש׳']
 ];
+const DETAIL = {
+ '1105': {
+  intro:'יום של ניגודים: בבוקר יער שקט ומקדש שינטו, בצהריים השדרה הכי אופנתית בטוקיו, אחר הצהריים גן יפני נסתר, ובערב הצומת הכי עמוס בעולם. כמעט כל היום על קו Ginza (הכתום), שמחבר את המלון, אומוטסנדו ושיבויה.',
+  stops:[
+   {t:'08:00', h:'יציאה מהמלון', dur:'35–45 דק׳',
+    how:'הולכים לתחנת Ginza או Higashi-ginza. קו Ginza (כתום, G) עד Omotesando (כ־12 דק׳), ושם מעבר באותה רציף לקו Chiyoda (ירוק, C) תחנה אחת עד Meiji-jingumae. יציאה 2, ומשם 3 דק׳ הליכה לשער הדרומי.',
+    tips:['ה־Suica עובד בכל הקווים — פשוט מעבירים בכניסה וביציאה.','קונביני ליד המלון: אוניגירי וקפה קר לדרך, אם לא אוכלים במלון.']},
+   {t:'08:30–10:00', h:'Meiji Jingu — היער שבנו בני אדם', dur:'כשעה וחצי', q:'Meiji Jingu',
+    story:'הקיסר מייג׳י הוא שפתח את יפן למערב אחרי 250 שנות סגירות. כשמת ב־1912, החליטו לבנות לו ולקיסרית שוקן מקדש — ומסביבו יער. על אדמה שהייתה כמעט שדה ריק נשתלו כ־100,000 עצים שנתרמו מכל רחבי יפן, ונשתלו בידי כ־110,000 מתנדבים. המתכננים חישבו שתוך מאה שנה היער יתחזק לבד, בלי שיצטרכו לשתול או לגזום. היום, יותר ממאה שנה אחרי, זה בדיוק מה שקרה: יער עבות באמצע הכרך. המקדש עצמו נשרף בהפצצות 1945 ונבנה מחדש ב־1958.',
+    see:['השער הגדול (Otorii) — שער העץ הגדול מסוגו ביפן, כ־12 מטר, מעץ ברוש בן יותר מ־1,500 שנה מטאיוואן.','קיר חביות הסאקה לצד הדרך, ומולו חביות יין מבורגונדי — מחווה לקיסר שאהב גם יין צרפתי. סמל לשילוב מזרח ומערב שהוא הוביל.','שני עצי הקמפור בחצר המרכזית, "עצי בני הזוג" (Meoto Kusu), שמחוברים בחבל קדוש — סמל לנישואים טובים.','ה־Omikuji כאן מיוחד: במקום ניבוי מזל מקבלים שיר קצר (waka) שכתבו הקיסר או הקיסרית, עם תרגום לאנגלית.'],
+    tips:['טקס ההיטהרות בכניסה: מצקת ביד ימין, שוטפים יד שמאל, מחליפים ושוטפים ימין, שופכים מעט מים לכף היד ומשיקים לפה, ומטים את המצקת כדי שהמים ישטפו את הידית.','תפילה: שתי קידות, שתי מחיאות כף, קידה אחת.','נובמבר הוא עונת Shichi-Go-San — ילדים בני 3, 5 ו־7 מגיעים עם ההורים בקימונו מלא לברכה. גם באמצע השבוע רואים משפחות כאלה; מותר לחייך, לשאול לפני שמצלמים.','הולכים בצד הדרך — המרכז שמור לאלים.']},
+   {t:'10:00–10:30', h:'Takeshita Street', dur:'20–30 דק׳', q:'Takeshita Street Harajuku',
+    how:'יוצאים מהשער הדרומי, חוצים את הגשר ליד תחנת JR Harajuku, והרחוב בדיוק מולכם.',
+    story:'350 מטר שהם לב תרבות ה־kawaii של טוקיו מאז שנות ה־70 וה־80: אופנת רחוב צבעונית, תלבושות, ממתקים ענקיים. יש כאן יותר צעירים ותיירים מאשר אופנה רצינית — אבל זה מחזה ששווה לראות פעם אחת.',
+    tips:['קרפ יפני מגולגל ב־Marion Crepes, פתוחה כאן מ־1976.','בבוקר עוד שקט יחסית. אחרי 11:00 הרחוב צפוף מאוד.']},
+   {t:'10:30–12:30', h:'Cat Street ואומוטסנדו — מסלול אדריכלות ואופנה', dur:'כשעתיים', q:'Cat Street Harajuku',
+    how:'מסוף Takeshita פונים ימינה לרחוב Meiji-dori, חוצים את Omotesando ונכנסים ל־Cat Street (מסומן). בסופו חוזרים לשדרת Omotesando.',
+    story:'Cat Street נבנה מעל נהר קטן (Onden) שכוסה בבטון בשנות ה־60 — לכן הוא מתפתל כמו נחל. היום יש בו חנויות קונספט, וינטג׳ ומותגי רחוב יפניים. שדרת Omotesando, עם עצי הזלקובה הגדולים, נבנתה במקור כדרך הגישה הטקסית למקדש מייג׳י — ולכן קוראים לה "הדרך הקדמית". היום היא תצוגת אדריכלות פתוחה: כל בית אופנה גדול הזמין לעצמו בניין מאדריכל מפורסם.',
+    see:['Omotesando Hills של טדאו אנדו — מבנה ארוך עם רמפה ספירלית פנימית, במקום בנייני מגורים מ־1927 (שימרו כניסה אחת מהם בקצה).','בניין Tod׳s של טויו איטו — בטון שיצוק בצורת צלליות של עצי הזלקובה שמולו.','בניין Dior של SANAA — קירות זכוכית שקופים־לבנים כמו שכבות בד.','בהמשך, בדרך לנזו: בניין Prada של Herzog & de Meuron — כולו יהלומי זכוכית.'],
+    tips:['לאסנת: Issey Miyake (Pleats Please ו־BAO BAO) ובדים יפניים בחנויות הקונספט של Cat Street.','לאסף: בניינים כאן הם הסיבה לבוא, גם בלי לקנות דבר. אפשר להיכנס לרוב החנויות רק כדי לראות את החלל.','עצירת קפה: הרבה בתי קפה קטנים ב־Cat Street ובסמטאות שמסביב.']},
+   {t:'12:30–13:30', h:'צהריים ב־Maisen Aoyama', dur:'60–75 דק׳', q:'Maisen Aoyama Honten', k:'food',
+    how:'5 דק׳ הליכה מ־Omotesando, בסמטה שקטה.',
+    story:'הטונקאטסו (שניצל חזיר יפני) של Maisen נחשב לאחד הטובים בטוקיו. אולם האוכל הראשי יושב בבית מרחץ ציבורי לשעבר — שימו לב לתקרה הגבוהה. הבשר רך כל כך שאומרים שאפשר לחתוך אותו במקלות.',
+    tips:['הזמינו את Kurobuta (חזיר שחור) אם רוצים את המנה המיוחדת.','האורז, מרק המיסו והכרוב הקצוץ — תוספות בלי הגבלה.','לא אוכלים חזיר? יש גם קציצת סרטנים וטונקאטסו עוף. חלופה מהירה: Harajuku Gyozarou.']},
+   {t:'13:30–15:30', h:'מוזיאון נזו והגן הנסתר', dur:'כשעתיים', q:'Nezu Museum',
+    how:'מ־Omotesando הולכים לאורך Miyuki-dori (עוברים ליד Prada) עד הסוף — כ־10 דק׳.',
+    story:'נזו קאיצ׳ירו היה איל רכבות (Tobu Railway) שאסף אמנות יפנית וסינית. אחרי מותו פתחו את האוסף לציבור ב־1941. ב־2009 תכנן קנגו קומה (האדריכל של האצטדיון האולימפי בטוקיו) בניין חדש: כבר בכניסה הולכים במעבר ארוך של במבוק וחצץ, שמנתק אתכם מהעיר. מאחורי המוזיאון מסתתר גן של כ־17,000 מ״ר שיורד במדרון: בריכה, בתי תה, פנסי אבן וגשרונים — ובנובמבר מתחילה השלכת.',
+    see:['תערוכת התלבושות: Bugaku — מחול חצר עתיק — עם בדים, אריגה וצביעה (24.10–23.11). חגיגה לאסנת.','בגן: לרדת עד הבריכה ולחזור במסלול המעגלי. בתי התה עצמם סגורים, אבל רואים אותם מבחוץ.'],
+    tips:['כרטיס בתאריך מסוים — עדיף לקנות מראש באתר.','NEZUCAFE בתוך הגן — קפה עם חלונות לעצים, מקום טוב לנוח.','נסגר 17:00, כניסה אחרונה 16:30. סגור בימי שני.']},
+   {t:'15:30–16:00', h:'לשיבויה', dur:'כ־15 דק׳',
+    how:'חוזרים לתחנת Omotesando וקו Ginza שתי תחנות לשיבויה. אפשר גם ללכת 20–25 דק׳ לאורך Aoyama-dori.'},
+   {t:'16:00–19:00', h:'שיבויה — הצומת, הכלב והגיימינג', dur:'כ־3 שעות', q:'Shibuya Scramble Crossing',
+    story:'ב־Shibuya Crossing חוצים בכל רמזור עד כ־3,000 איש מחמישה כיוונים בבת אחת — ואיכשהו אף אחד לא נתקע. ליד היציאה עומד פסל Hachiko: כלב אקיטה שחיכה כל יום לבעליו, הפרופסור אואנו, בתחנה. גם אחרי שהפרופסור מת ב־1925 בעבודה, הכלב המשיך לבוא לתחנה במשך כמעט עשר שנים, עד מותו ב־1935. הפסל המקורי הותך למתכת במלחמה, והנוכחי הוצב ב־1948. זו נקודת המפגש הכי מפורסמת בטוקיו.',
+    see:['לחצות את הצומת לפחות פעם אחת באלכסון.','מבט מלמעלה בחינם: מעבר הזכוכית של Shibuya Mark City (בקומה 2, במעבר בין JR לקו Inokashira) — חלון ענק שמשקיף על הצומת.','לאסף: Shibuya PARCO, קומה 6 — Nintendo Tokyo, Pokémon Center, Capcom Store ו־Jump Shop באותה קומה.','לאסנת: PARCO עצמו מלא במעצבים יפניים, ו־Shibuya Hikarie / Miyashita Park לאופנה.'],
+    tips:['השקיעה בטוקיו בתחילת נובמבר בסביבות 16:45 — האורות נדלקים כשאתם מגיעים.','מתפצלים? קבעו מקום ושעה: למשל ליד פסל Hachiko ב־18:30. בשיבויה קל ללכת לאיבוד.']},
+   {t:'19:00', h:'ערב וחזרה', k:'food', q:'Shibuya Yokocho',
+    story:'שלוש אפשרויות קלות באזור: Shibuya Yokocho מתחת ל־Miyashita Park — סמטת אוכל עם דוכנים מכל אזורי יפן, אווירה שמחה וזולה. Uobei — סושי שמזמינים במסך ומגיע ברכבת קטנה, כיף וזול. או Ichiran — ראמן בתאים אישיים.',
+    how:'חזרה: קו Ginza ישירות משיבויה לתחנת Ginza, כ־16 דק׳ בלי החלפות.'}
+  ]
+ }
+};
 </script>
 <script>
 (function(){
@@ -804,6 +863,19 @@ function foodCard(d){
       <div class="links">${QTYPES.map(([he,en]) => `<a href="${G(en+' near '+area[1])}" target="_blank" rel="noopener">${he}</a>`).join('')}</div>` : ''}
     </div></div>`;
 }
+function fullPlan(d){
+  const x = (typeof DETAIL !== 'undefined') && DETAIL[d.id]; if (!x) return '';
+  const stop = s => `<div class="stop">
+    <div class="when">${s.t?`<span class="t">${esc(s.t)}</span>`:''}${s.dur?`<span class="dur">· ${esc(s.dur)}</span>`:''}</div>
+    <h3>${esc(s.h)}</h3>
+    ${s.how?`<p class="how"><b>איך מגיעים:</b> ${esc(s.how)}</p>`:''}
+    ${s.story?`<p class="story">${esc(s.story)}</p>`:''}
+    ${s.see&&s.see.length?`<div class="lbl">לא לפספס</div><ul>${s.see.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`:''}
+    ${s.tips&&s.tips.length?`<div class="lbl">טיפים</div><ul class="tips">${s.tips.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`:''}
+    ${s.q?`<a class="go" href="${G(s.q)}" target="_blank" rel="noopener">ניווט ↗</a>`:''}</div>`;
+  return `<div class="full"><div><div class="eyebrow">שעה אחרי שעה, עם הסיפורים</div><h2>המסלול המלא</h2></div>
+    <p class="intro">${esc(x.intro)}</p>${x.stops.map(stop).join('')}</div>`;
+}
 function viewDay(id){
   const d = DAYS.find(x => x.id === id); if(!d) return viewRoute();
   const c = chOf(d.ch);
@@ -817,7 +889,8 @@ function viewDay(id){
       <h1>${esc(d.title)}</h1><div>${esc(d.core)}</div>
       <div class="meta">${meta.map(m => `<span>${esc(m)}</span>`).join('')}</div></div>
     ${d.choice ? `<div class="choice"><b>בחירה של הבוקר:</b> ${esc(d.choice)}</div>` : ''}
-    <div class="card"><div class="tl">${d.blocks.map((b,j) => blockHtml(b,nowIdx,j)).join('')}</div></div>
+    <div class="card sumcard">${DETAIL[d.id]?'<div class="eyebrow">בקצרה</div>':''}<div class="tl">${d.blocks.map((b,j) => blockHtml(b,nowIdx,j)).join('')}</div></div>
+    ${fullPlan(d)}
     ${foodCard(d)}
     ${d.links && d.links.length ? `<div class="links">${d.links.map(([l,u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join('')}</div>` : ''}
     ${c ? `<button type="button" class="mapbtn" data-map="${c.id}"><span class="th" style="background-image:url('${c.map}')"></span><span><span class="eyebrow">מפת השלב</span><br><b>${esc(c.mapName)}</b></span></button>` : ''}

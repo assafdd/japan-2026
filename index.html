@@ -365,6 +365,17 @@ details.card p{margin:10px 0 0}
 .cult summary::before{content:"📜 "}
 .cult summary::-webkit-details-marker{display:none}
 .cult .sec{margin-top:6px}
+.locfab{position:fixed;z-index:24;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(76px + env(safe-area-inset-bottom,0px));width:52px;height:52px;border-radius:50%;border:0;background:var(--c,var(--maple));color:#fff;font-size:22px;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer}
+.locfab.busy{animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(.9);opacity:.7}}
+body.all .locfab{display:none}
+.locbox{display:flex;flex-direction:column;gap:6px}
+.locbtn{border:0;border-radius:14px;padding:12px 14px;font-weight:800;background:var(--c);color:#fff;cursor:pointer;font-size:15px}
+.locstat{font-size:14px;color:var(--muted);min-height:1em}
+.locstat b{color:var(--ink)}
+.stop.here{box-shadow:0 0 0 3px var(--c);scroll-margin-top:70px}
+.stop.here .when::before{content:"📍 אתם כאן";background:var(--c);color:#fff;border-radius:6px;padding:0 7px;font-size:11px}
+.stop{scroll-margin-top:70px}
 .routes{display:flex;flex-direction:column;gap:8px}
 .route{display:flex;flex-direction:column;gap:2px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
 .route b{color:var(--c)}
@@ -793,6 +804,23 @@ const CULTURE = {
  }
 };
 const PHOTO_CREDIT = {"forest": "NatalieTracy · CC BY-SA 2.0 · flickr", "torii": "roger4336 · CC BY-SA 2.0 · flickr", "shrine": "roger4336 · CC BY-SA 2.0 · flickr", "ema": "JapanDave · CC BY-NC-SA 2.0 · flickr", "sake": "palbion · CC BY-NC-SA 2.0 · flickr", "wine": "wallyg · CC BY-NC-ND 2.0 · flickr", "takeshita": "Felstone · CC BY-NC-SA 2.0 · flickr", "omotesando": "Retinafunk · CC BY-SA 2.0 · flickr", "hills": "Nokton · CC BY-NC 2.0 · flickr", "cat": "Cheapflights / Cheapflug · CC BY-NC-SA 2.0 · flickr", "nezuentry": "FS0907 · CC BY-NC-ND 2.0 · flickr", "nezugarden": "mwmosser · CC BY-NC-SA 2.0 · flickr", "shibuya": "hitthatswitch · CC BY-NC-SA 2.0 · flickr", "hachiko": "soberch · CC BY-NC-SA 2.0 · flickr"};
+const LOC = {
+ '1105': {
+  'תחנת Yoyogi':[35.6830,139.7020],
+  'תחנה 1':[35.6795,139.6995],
+  'תחנה 2':[35.6748,139.6985],
+  'תחנה 4':[35.6764,139.6993],
+  'תחנה 5':[35.6716,139.6975],
+  'סטייה אופציונלית':[35.6735,139.6980],
+  'תחנה 6':[35.6713,139.7046],
+  'תחנה 7':[35.6673,139.7087],
+  'צהריים':[35.6688,139.7134],
+  'תחנה 8':[35.6680,139.7055],
+  'מוזיאון נזו':[35.6623,139.7168],
+  'שיבויה':[35.6595,139.7005],
+  'ערב':[35.6620,139.7020]
+ }
+};
 </script>
 <script>
 (function(){
@@ -991,7 +1019,8 @@ function fullPlan(d){
     ${s.ol?`<ol class="steps">${s.ol.map(([a,b])=>`<li><b class="num">${esc(a)}</b><span>${esc(b)}</span></li>`).join('')}</ol>`:''}
     ${s.p&&(s.ol||s.ul)?paras(s.p):''}</div>`;
   const kinds = {opt:'אופציונלי', food:'אוכל'};
-  const stop = s => `<div class="stop ${s.k?'k-'+s.k:''}">
+  const locOf = s => { const L=(typeof LOC!=='undefined'&&LOC[d.id])||{}; const k=Object.keys(L).find(k=>s.h.startsWith(k)); return k?L[k]:null; };
+  const stop = s => { const ll=locOf(s); return `<div class="stop ${s.k?'k-'+s.k:''}" ${ll?`data-ll="${ll[0]},${ll[1]}"`:''}>
     <div class="when">${s.k?`<span class="kd">${kinds[s.k]}</span>`:''}${s.t?`<span class="t">${esc(s.t)}</span>`:''}${s.dur?`<span class="dur">${s.t?'· ':''}${esc(s.dur)}</span>`:''}</div>
     <h3>${esc(s.h)}</h3>
     ${s.img&&s.img[0]?`<div class="phs ${s.img.length>1?'two':''}">${s.img.map(fig).join('')}</div>`:''}
@@ -1001,12 +1030,13 @@ function fullPlan(d){
     ${(()=>{ const c=(typeof CULTURE!=='undefined'&&CULTURE[d.id])||{}; const k=Object.keys(c).find(k=>s.h.startsWith(k)); return k?`<details class="cult" open><summary>סיפורים ותרבות</summary>${c[k].map(sec).join('')}</details>`:''; })()}
     ${s.see&&s.see.length?`<div class="lbl">לא לפספס</div><ul>${s.see.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`:''}
     ${s.tips&&s.tips.length?`<div class="lbl">טיפים</div><ul class="tips">${s.tips.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`:''}
-    ${s.q?`<a class="go" href="${G(s.q)}" target="_blank" rel="noopener">ניווט ↗</a>`:''}</div>`;
+    ${s.q?`<a class="go" href="${G(s.q)}" target="_blank" rel="noopener">ניווט ↗</a>`:''}</div>` };
   const route = r => { const o=r.pts[0], dst=r.pts[r.pts.length-1], w=r.pts.slice(1,-1);
     const u='https://www.google.com/maps/dir/?api=1&travelmode=walking&origin='+encodeURIComponent(o)+'&destination='+encodeURIComponent(dst)+(w.length?'&waypoints='+encodeURIComponent(w.join('|')):'');
     return `<a class="route" href="${u}" target="_blank" rel="noopener"><b>${esc(r.title)}</b><span>${r.pts.map(p=>esc(p.split(',')[0])).join(' → ')}</span></a>`; };
   return `<div class="full"><div><div class="eyebrow">שעה אחרי שעה, עם הסיפורים</div><h2>המסלול המלא</h2></div>
     <p class="intro">${esc(x.intro)}</p>
+    ${LOC[d.id]?`<div class="locbox"><button type="button" class="locbtn" data-locate>📍 איפה אני? הראו לי את התחנה הקרובה</button><div class="locstat" id="locStat" aria-live="polite"></div></div><button type="button" class="locfab" data-locate aria-label="איפה אני">📍</button>`:''}
     ${x.routes?`<div class="routes"><div class="eyebrow">מסלולי הליכה בגוגל מפות</div>${x.routes.map(route).join('')}</div>`:''}
     ${x.stops.map(stop).join('')}</div>`;
 }
@@ -1130,6 +1160,32 @@ function render(){
   else m.innerHTML = ({today:viewToday, route:viewRoute, maps:viewMaps, food:viewFood, lists:viewLists}[state.tab] || viewToday)();
 }
 
+
+/* where am I: nearest stop by GPS (works offline) */
+function distM(a,b){ const R=6371000, t=x=>x*Math.PI/180; const dl=t(b[0]-a[0]), dn=t(b[1]-a[1]);
+  const q=Math.sin(dl/2)**2+Math.cos(t(a[0]))*Math.cos(t(b[0]))*Math.sin(dn/2)**2; return 2*R*Math.asin(Math.sqrt(q)); }
+function fmtDist(m){ return m<1000 ? `${Math.round(m/10)*10} מ׳` : `${(m/1000).toFixed(1)} ק״מ`; }
+function locate(){
+  const st=$('#locStat'); if(!st) return;
+  if(!navigator.geolocation){ st.textContent='הטלפון לא מאפשר מיקום בדפדפן הזה.'; return; }
+  st.textContent='מחפש מיקום…'; document.querySelectorAll('.locfab').forEach(b=>b.classList.add('busy'));
+  navigator.geolocation.getCurrentPosition(pos => { document.querySelectorAll('.locfab').forEach(b=>b.classList.remove('busy'));
+    const me=[pos.coords.latitude,pos.coords.longitude];
+    const stops=[...document.querySelectorAll('.stop[data-ll]')];
+    if(!stops.length){ st.textContent=''; return; }
+    let best=null, bd=Infinity;
+    stops.forEach(el => { const ll=el.dataset.ll.split(',').map(Number); const dd=distM(me,ll); if(dd<bd){bd=dd;best=el;} });
+    document.querySelectorAll('.stop.here').forEach(e=>e.classList.remove('here'));
+    const name=best.querySelector('h3').textContent;
+    if(bd>3000){ st.innerHTML=`אתם רחוקים מהמסלול של היום (${fmtDist(bd)} מהתחנה הקרובה: ${esc(name)}).`; st.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    best.classList.add('here');
+    st.innerHTML=`אתם ליד <b>${esc(name)}</b> · ${fmtDist(bd)}${pos.coords.accuracy>150?' (דיוק נמוך)':''}`;
+    best.scrollIntoView({behavior:'smooth',block:'start'});
+  }, err => { document.querySelectorAll('.locfab').forEach(b=>b.classList.remove('busy'));
+    st.scrollIntoView({behavior:'smooth',block:'center'}); st.textContent = err.code===1 ? 'אין הרשאת מיקום. באייפון: הגדרות ← פרטיות ← שירותי מיקום ← אתרי Safari ← "בזמן השימוש".' : 'לא הצלחתי למצוא מיקום. נסו שוב בעוד רגע, רצוי בשטח פתוח.';
+  }, {enableHighAccuracy:true, timeout:20000, maximumAge:30000});
+}
+document.addEventListener('click', e => { if (e.target.closest('[data-locate]')) locate(); });
 /* map viewer */
 function openMap(id){
   const c = chOf(+id); if(!c) return;

@@ -369,6 +369,12 @@ details.card p{margin:10px 0 0}
 .locfab.busy{animation:pulse 1s infinite}
 @keyframes pulse{50%{transform:scale(.9);opacity:.7}}
 body.all .locfab{display:none}
+.opts{display:grid;grid-template-columns:1fr;gap:8px}
+@media (min-width:520px){.opts{grid-template-columns:1fr 1fr}}
+.opt{border:1.5px dashed var(--c);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.opt .ol{align-self:flex-start;background:var(--c);color:#fff;font-size:11px;font-weight:800;border-radius:6px;padding:1px 8px}
+.opt b{font-size:15px}
+.opt .story{font-size:15px}
 .locbox{display:flex;flex-direction:column;gap:6px}
 .locbtn{border:0;border-radius:14px;padding:12px 14px;font-weight:800;background:var(--c);color:#fff;cursor:pointer;font-size:15px}
 .locstat{font-size:14px;color:var(--muted);min-height:1em}
@@ -434,13 +440,13 @@ const DAYS = [
    {k:'alt', h:'במקום נזו: Shibuya Sky', p:'חלון שקיעה מוזמן, ומבטלים או מקצצים את נזו והקניות. אין היגיון לצאת מנזו ב־16:00 ולרוץ לשקיעה. הגג תלוי במזג האוויר.'}
   ], links:[['נזו — תערוכת נובמבר','https://www.nezu-muse.or.jp/jp/exhibitions/upcoming/'],['Shibuya Sky','https://www.shibuya-scramble-square.com/sky/ticket/'],['מייג׳י ג׳ינגו','https://www.meijijingu.or.jp/en/']]},
 
- {id:'1106', date:'2026-11-06', dow:'שישי', ch:1, title:'גן סתיו ושינג׳וקו בלילה', sleep:'Solaria Ginza', core:'Shinjuku Gyoen • קניות ממוקדות • ערב שינג׳וקו', pace:'בינוני • 6–8 ק״מ',
+ {id:'1106', date:'2026-11-06', dow:'שישי', ch:1, title:'גן סתיו ושינג׳וקו בלילה', sleep:'Solaria Ginza', core:'Shinjuku Gyoen • קניות ממוקדות • 19:00 Night Walk', pace:'בינוני • 6–8 ק״מ',
   blocks:[
    {t:'09:00–11:30', h:'Shinjuku Gyoen', p:'קו Marunouchi ל־Shinjuku-gyoemmae. מסלול דרך האזור היפני, בריכה אחת ושדרת עצים. תערוכת החרציות הרשמית 1–15.11.'},
    {t:'12:00–15:30', h:'אוכל, אופנה וטכנולוגיה', p:'Shinjuku-sanchome. אסנת ב־Isetan, אסף באלקטרוניקה סביב התחנה. משווים ורושמים דגמים; קנייה כבדה נדחית ל־20.11. מפגש בתוך בית כלבו.'},
    {k:'alt', h:'במקום קניות', p:'תצפית בניין ממשלת טוקיו, שעה–שעה וחצי כולל תור. בדקו שעות המצפה.'},
-   {t:'16:30–19:30', h:'העיר מחליפה צבע', p:'Hanazono Shrine, הניאון של Kabukicho וסמטאות Omoide Yokocho. ב־Golden Gai שאלו על דמי ישיבה. ארבעה לא תמיד נכנסים יחד.'},
-   {k:'food', h:'ערב מיוחד', p:'Rokkasen Otakibashi ליאקיניקו, בהזמנה. אם בוחרים בו, הסמטאות נשארות טיול רגלי.'},
+   {t:'19:00', h:'Free Night Walk בשינג׳וקו', tag:'מוזמן', p:'סיור ערב מודרך ברגל: Kabukicho, Omoide Yokocho, Golden Gai והניאון. הגיעו 10 דק׳ לפני לנקודת המפגש שבהזמנה. סיור על בסיס טיפ — מזומן ביד.'},
+   {k:'food', h:'אוכל סביב הסיור', p:'ארוחה מוקדמת וקלה לפני 19:00, או ארוחה מאוחרת אחרי הסיור. Rokkasen עדיין אפשרי אחרי הסיור, אם יש הזמנה מאוחרת.'},
    {k:'warn', h:'בגשם', p:'יותר זמן ב־Isetan, פחות גן. סיור ערב בעברית של שעתיים מתאים ליום הזה.'}
   ], links:[['Shinjuku Gyoen — נובמבר','https://policies.env.go.jp/national-garden/shinjukugyoen/english/event/calendar/202611.html'],['Rokkasen','https://rokkasen.co.jp/']]},
 
@@ -1027,6 +1033,7 @@ function fullPlan(d){
     ${s.how?`<p class="how"><b>איך מגיעים:</b> ${esc(s.how)}</p>`:''}
     ${s.story?paras(s.story):''}
     ${(s.sections||[]).map(sec).join('')}
+    ${s.options&&s.options.length?`<div class="opts">${s.options.map(o=>`<div class="opt"><span class="ol">${esc(o.label||'')}</span>${o.h?`<b>${esc(o.h)}</b>`:''}${o.p?paras(o.p):''}${o.ul?`<ul>${o.ul.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`:''}</div>`).join('')}</div>`:''}
     ${(()=>{ const c=(typeof CULTURE!=='undefined'&&CULTURE[d.id])||{}; const k=Object.keys(c).find(k=>s.h.startsWith(k)); return k?`<details class="cult" open><summary>סיפורים ותרבות</summary>${c[k].map(sec).join('')}</details>`:''; })()}
     ${s.see&&s.see.length?`<div class="lbl">לא לפספס</div><ul>${s.see.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`:''}
     ${s.tips&&s.tips.length?`<div class="lbl">טיפים</div><ul class="tips">${s.tips.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`:''}

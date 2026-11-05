@@ -1,5 +1,5 @@
 // Keeps the app on the phone. Online: loads the latest version (and saves it). Offline or slow: uses the saved copy.
-const CACHE = 'japan-v6';
+const CACHE = 'japan-v7';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png?v=3', 'icon-192.png?v=3', 'icon-512.png?v=3'];
 
 self.addEventListener('install', e => {

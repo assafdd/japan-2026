@@ -1,5 +1,5 @@
 // Keeps the app on the phone. Online: loads the latest version (and saves it). Offline or slow: uses the saved copy.
-const CACHE = 'japan-v14';
+const CACHE = 'japan-v15';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png?v=3', 'icon-192.png?v=3', 'icon-512.png?v=3', 'img/1106-cat3d.jpg', 'img/1106-chrys.jpg', 'img/1106-godzilla.jpg', 'img/1106-goldengai.jpg', 'img/1106-gyoen.jpg', 'img/1106-hanazono.jpg', 'img/1106-kabuki.jpg', 'img/1106-omoide.jpg', 'img/1106-station.jpg', 'img/1106-tocho.jpg', 'img/1106-yodobashi.jpg', 'img/1107-ginza.jpg', 'img/1107-hongwanji.jpg', 'img/1107-teamlab.jpg', 'img/1107-tower.jpg', 'img/1107-tsukiji.jpg', 'img/1107-tuna.jpg', 'img/1107-zojoji.jpg', 'img/cat.jpg', 'img/ema.jpg', 'img/forest.jpg', 'img/hachiko.jpg', 'img/hills.jpg', 'img/nezuentry.jpg', 'img/nezugarden.jpg', 'img/omotesando.jpg', 'img/sake.jpg', 'img/shibuya.jpg', 'img/shrine.jpg', 'img/takeshita.jpg', 'img/torii.jpg', 'img/wine.jpg'];
 
 self.addEventListener('install', e => {

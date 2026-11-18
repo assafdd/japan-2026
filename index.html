@@ -410,7 +410,7 @@ const CHAPTERS = [
   {id:2, name:'פוג׳י והאקונה — טבע במשחק', short:'האקונה', dates:'8–9.11', map:IMG.hakone, mapName:'Hakone Arcade', color:'teal', hotel:'Hakone Kowakien TEN-YU', tag:'ארקייד צבעוני • מוזיאון פתוח, אגם, הר געש ואונסן.'},
   {id:3, name:'דרך ההרים — הדפס יפני חי', short:'הרים', dates:'10–13.11', map:IMG.samurai, mapName:'The Samurai Trail', color:'indigo', hotel:'היראיו • טאקאיאמה • קנזאווה', tag:'מאצומוטו, היראיו, טאקאיאמה, שירקאווה־גו וקנזאווה.'},
   {id:4, name:'קיוטו — יפן מקופלת בנייר', short:'קיוטו', dates:'14–18.11', map:IMG.kyoto, mapName:'Kyoto Paper & Maple', color:'maple', hotel:'Solaria Nishitetsu Hotel Kyoto Premier', tag:'בסיס אחד ליד נהר קאמו, וטיולי יום לפי בחירה.'},
-  {id:5, name:'טוקיו — סיבוב הבונוס', short:'בונוס', dates:'19–20.11', map:IMG.bonus, mapName:'Tokyo Bonus Round', color:'plum', hotel:'&Here TOKYO UENO', tag:'רכבת מהירה, אואנו, פסטיבל וקניות אחרונות.'}
+  {id:5, name:'טוקיו — סיבוב הבונוס', short:'בונוס', dates:'19–21.11', map:IMG.bonus, mapName:'Tokyo Bonus Round', color:'plum', hotel:'&Here TOKYO UENO', tag:'רכבת מהירה, אואנו, פסטיבל וקניות אחרונות.'}
 ];
 
 // kind: main | opt (לבחירה) | alt (חלופה) | warn | food
@@ -568,24 +568,30 @@ const DAYS = [
    {k:'warn', h:'אריזה', p:'תיק נגיש לרכבת. אם שלחתם מזוודות לאואנו, ודאו אישור קבלה.'}
   ], links:[['טירת Nijo','https://nijo-jocastle.city.kyoto.lg.jp/?lang=en'],['Kikunoi Roan','https://kikunoi.jp/restaurant/roan.html']]},
 
- {id:'1119', date:'2026-11-19', dow:'חמישי', ch:5, title:'רכבת בולט ופסטיבל מזל', sleep:'&Here Ueno', core:'שינקנסן • קאפבאשי • אסאקוסה • Tori-no-Ichi',
+ {id:'1119', date:'2026-11-19', dow:'חמישי', ch:5, title:'רכבת בולט ופסטיבל מזל', sleep:'&Here Ueno', core:'שינקנסן 10:05 • קאפבאשי • אסאקוסה • Tori-no-Ichi',
   blocks:[
-   {t:'07:00–11:30', h:'קיוטו → טוקיו → אואנו', p:'בתחנה 25–30 דק׳ מראש. Nozomi בסביבות 08:00, 2:10–2:20 ש׳. פוג׳י בצד שמאל — חלון E. ממשיכים ב־JR לאואנו ומוסרים מזוודות.'},
-   {t:'12:00–14:30', h:'Kappabashi', p:'קערות, קרמיקה, סכינים ומודלים של אוכל. שתיים־שלוש חנויות. סכין נארזת במטען שנשלח.'},
-   {t:'14:30–17:00', h:'Asakusa ו־Senso-ji', p:'Kaminarimon, Nakamise והרחובות הצדדיים. בלי Skytree היום.'},
+   {t:'09:30', h:'צ׳ק־אאוט ותחנת קיוטו', p:'בתחנה 25–30 דק׳ לפני. קונים אקיבן לנסיעה.'},
+   {t:'10:05', h:'שינקנסן לטוקיו (מוזמן)', p:'כשעתיים ורבע. פוג׳י בצד הצפוני — מושב E. ממשיכים ב־JR לאואנו ומשאירים מזוודות במלון.'},
+   {t:'13:30–15:00', h:'Kappabashi', p:'קערות, קרמיקה, סכינים ומודלים של אוכל. שתיים־שלוש חנויות.'},
+   {t:'15:00–17:00', h:'Asakusa ו־Senso-ji', p:'Kaminarimon, Nakamise והרחובות הצדדיים.'},
    {k:'food', h:'ארוחה מוקדמת', p:'Sometaro לאוקונומיאקי או Hatsuogawa לצלופח.'},
-   {t:'18:00–20:00', h:'Tori-no-Ichi במקדש Otori', p:'מועד רשמי ב־2026. ב־Senzoku, לא ב־Senso-ji: 20–30 דק׳ הליכה. מגרפות מזל, קריאות ומחיאות. מזומן ומקום מפגש.'}
+   {t:'18:00–20:00', h:'Tori-no-Ichi במקדש Otori', p:'ב־Senzoku, לא ב־Senso-ji: 20–30 דק׳ הליכה. מגרפות מזל, קריאות ומחיאות. מזומן ומקום מפגש.'}
   ], links:[['SmartEX','https://smart-ex.jp/en/'],['Otori — מועדי 2026','https://otorisama.or.jp/sm/kotoshi_m/'],['ניווט למלון',G('&Here TOKYO UENO')],['ניווט ל־Otori',G('Otori Shrine Asakusa')]]},
 
- {id:'1120', date:'2026-11-20', dow:'שישי', ch:5, title:'הבוקר שלכם, והביתה', sleep:'בטיסה', core:'קניות ממוקדות • מזוודות • טיסה 21:30',
+ {id:'1120', date:'2026-11-20', dow:'שישי', ch:5, title:'היום החופשי האחרון בטוקיו', sleep:'&Here Ueno', core:'אואנו • Akihabara / גינזה • ארוחת פרידה',
   blocks:[
-   {t:'08:00–10:00', h:'בוקר וצ׳ק־אאוט', p:'45–60 דק׳ סביב Ueno Park ו־Shinobazu. אורזים ומשאירים מזוודות לשמירה.'},
-   {t:'10:00–13:30', h:'אסף — Akihabara', p:'Yodobashi וחנויות שנבחרו מראש, כשעתיים וחצי. בודקים מתח, שפה ואחריות.'},
-   {t:'10:00–13:30', h:'אסנת — Ginza או Ueno', p:'רכישות ספציפיות בגינזה (קו Ginza), או Okachimachi ו־Ameyoko. מפגש באואנו 13:30–14:00.'},
-   {k:'alt', h:'במקום קניות', p:'Tokyo National Museum, 2–3 שעות. Inshotei לצהריים חגיגיים אם יש מרווח.'},
-   {t:'14:00–16:15', h:'מפגש ומזוודות', p:'מוכנים ליציאה 16:00–16:15. בשדה 17:30–18:00.'},
-   {k:'warn', h:'לשדה', p:'נריטה: Skyliner מ־Keisei-Ueno (לא JR Ueno). האנדה: JR והמונורייל או Keikyu, 60–90 דק׳. Tax Free: קבלות ומוצרים נגישים לבדיקה.'},
-   {t:'21:30', h:'המראה', p:'נחיתה בדובאי 04:40, המשך 06:15, תל אביב 08:05 ב־21.11.'}
+   {t:'בוקר', h:'אואנו או יאנאקה', p:'Ueno Park ו־Shinobazu, Tokyo National Museum, או הסמטאות הישנות של Yanaka.'},
+   {t:'צהריים', h:'אסף — Akihabara · אסנת — גינזה או Ameyoko', p:'היום של הקניות הגדולות. דרכון ל־Tax Free. נקודת מפגש ושעה קבועות.'},
+   {t:'אחה״צ', h:'בחירה', p:'Skytree או Shibuya Sky בשקיעה, או מנוחה ואריזה.'},
+   {k:'food', h:'ארוחת פרידה', p:'Inshotei בפארק, סוקיאקי ב־Asakusa Imahan, או איזקאיה מתחת לפסים של Ameyoko.'}
+  ], links:[['Tax Free החדש','https://www.nta.go.jp/publication/pamph/shohi/menzei/202506/pdf/0025006-106.pdf']]},
+
+ {id:'1121', date:'2026-11-21', dow:'שבת', ch:5, title:'בוקר אחרון, והביתה', sleep:'בטיסה', core:'בוקר באואנו • צ׳ק־אאוט • טיסה 17:30',
+  blocks:[
+   {t:'08:00–11:00', h:'בוקר באואנו וצ׳ק־אאוט', p:'הליכה בפארק, קניות אחרונות ב־Ameyoko. מזוודות לשמירה במלון.'},
+   {t:'12:00', h:'ארוחת צהריים אחרונה', p:'ליד אואנו, בלי לחץ.'},
+   {k:'warn', h:'לשדה התעופה', p:'בשדה כ־3 שעות לפני הטיסה (~14:30). נריטה: Skyliner מ־Keisei-Ueno (לא JR Ueno), יוצאים ~13:15. האנדה: יוצאים ~13:45. Tax Free: קבלות ומוצרים נגישים לבדיקה.'},
+   {t:'17:30', h:'המראה', p:'דרך דובאי הביתה. בדקו שעות המשך בכרטיס הטיסה.'}
   ], links:[['Skyliner','https://www.keisei.co.jp/keisei/tetudou/skyliner/us/index.php'],['Tax Free החדש','https://www.nta.go.jp/publication/pamph/shohi/menzei/202506/pdf/0025006-106.pdf']]}
 ];
 
@@ -620,7 +626,7 @@ const FOOD = [
 const CHECKS = [
  {g:'עכשיו', items:[
   ['ten','TEN-YU ו־Miyama Ouan: סוג חדר, צ׳ק־אין, ארוחות, קעקועים'],
-  ['ueno','לאשר הזמנה ב־&Here TOKYO UENO ל־19–20.11'],
+  ['ueno','לאשר הזמנה ב־&Here TOKYO UENO ל־19–21.11 (שני לילות)'],
   ['tires','Toyota: צמיגי חורף/שרשראות להיראיו ב־10.11'],
   ['drivers','Toyota: כל הנהגים, ETC, ביטוח, תא מטען לרביעייה'],
   ['idp','היתר נהיגה בין־לאומי (ז׳נבה 1949) לכל נהג'],
@@ -656,7 +662,7 @@ const STAYS = [
  ['11–12.11','מלון באזור טאקאיאמה','טאקאיאמה',1,'Takayama'],
  ['12–14.11','THE HOTEL SANRAKU KANAZAWA','קנזאווה',2,'THE HOTEL SANRAKU KANAZAWA'],
  ['14–19.11','Solaria Nishitetsu Hotel Kyoto Premier','קיוטו',5,'Solaria Nishitetsu Hotel Kyoto Premier'],
- ['19–20.11','&Here TOKYO UENO','טוקיו',1,'&Here TOKYO UENO']
+ ['19–21.11','&Here TOKYO UENO','טוקיו',2,'&Here TOKYO UENO']
 ];
 
 const EVENTS = [
@@ -806,7 +812,7 @@ const CULTURE = {
    {h:'"למחוק את האדריכלות"', p:['קנגו קומה אומר שהוא רוצה "למחוק את האדריכלות" — שהבניין ייעלם בתוך הטבע. שימו לב לגג הנמוך והמשופע, שמזכיר בית יפני מסורתי, ולחומרים: עץ, במבוק, אבן. אותו רעיון תראו באצטדיון הלאומי שלו, עם עצים מכל מחוזות יפן — כמו היער של מייג׳י.']},
    {h:'האוצר שלא תראו היום', p:['הפריט המפורסם במוזיאון הוא זוג פרגודים עם אירוסים של אוגטה קורין, מהמאה ה־18 — אוצר לאומי. מציגים אותם רק כמה שבועות בשנה, באביב, כשהאירוסים בגן פורחים.']}],
   'שיבויה': [
-   {h:'Hachiko מחכה לכם באואנו', p:['הפרופסור אואנו הידסאבורו לימד חקלאות באוניברסיטה הקיסרית ומת משבץ באמצע הרצאה. אחרי מותו של Hachiko, גופו נשמר — והוא מוצג עד היום במוזיאון הלאומי לטבע ולמדע באואנו, השכונה שבה תהיו ב־19–20.11. ב־2015 הציבו באוניברסיטת טוקיו פסל שבו הכלב קופץ סוף־סוף על הפרופסור. סרט הוליוודי, "Hachi" עם ריצ׳רד גיר (2009), העביר את הסיפור לעולם.']},
+   {h:'Hachiko מחכה לכם באואנו', p:['הפרופסור אואנו הידסאבורו לימד חקלאות באוניברסיטה הקיסרית ומת משבץ באמצע הרצאה. אחרי מותו של Hachiko, גופו נשמר — והוא מוצג עד היום במוזיאון הלאומי לטבע ולמדע באואנו, השכונה שבה תהיו ב־19–21.11. ב־2015 הציבו באוניברסיטת טוקיו פסל שבו הכלב קופץ סוף־סוף על הפרופסור. סרט הוליוודי, "Hachi" עם ריצ׳רד גיר (2009), העביר את הסיפור לעולם.']},
    {h:'איך 3,000 איש לא מתנגשים', p:['אין סוד מלבד תרבות: הולכים בקצב, לא עוצרים באמצע, לא מצלמים בעמידה במעבר. נסו לחצות פעם אחת בלי לצלם — ותרגישו את הזרם.']}]
  }
 };
@@ -2160,7 +2166,7 @@ Object.assign(PHOTO_CREDIT, {"1115-deer": "kucing1 · CC BY-SA 2.0 · flickr", "
 /*END 1115*/
 /*DAY 1118*/
 DETAIL['1118'] = {
- intro:'היום האחרון בקיוטו הוא יום של פרטים קטנים: בבוקר הטירה שבה התחיל ונגמר עידן השוגונים — סגירת מעגל לסיפור של הקיסר מייג׳י מ־5.11 — בצהריים "המטבח של קיוטו" וקניות אחרונות, אחר הצהריים מקדש אחד לעומק בצד המזרחי של העיר, ובערב ארוחת פרידה ואריזה. מחר בבוקר רכבת מהירה לטוקיו.',
+ intro:'היום האחרון בקיוטו הוא יום של פרטים קטנים: בבוקר הטירה שבה התחיל ונגמר עידן השוגונים — סגירת מעגל לסיפור של הקיסר מייג׳י מ־5.11 — בצהריים "המטבח של קיוטו" וקניות אחרונות, אחר הצהריים מקדש אחד לעומק בצד המזרחי של העיר, ובערב ארוחת פרידה ואריזה. מחר ב־10:05 רכבת מהירה לטוקיו.',
  routes:[
   {title:'בוקר: מהמלון לטירה ולשוק', pts:['Solaria Nishitetsu Hotel Kyoto Premier','Nijo Castle, Kyoto','Nishiki Market, Kyoto']},
   {title:'צהריים: השוק והארקדות', pts:['Nishiki Market, Kyoto','Teramachi Shopping Street, Kyoto','Shinkyogoku Shopping Street, Kyoto']},
@@ -2361,7 +2367,7 @@ function renderHeader(){
   else status = 'הטיול הסתיים';
   $('#hdr').innerHTML = state.day
     ? `<button class="back" type="button" data-back>→ חזרה</button><div class="status">${status}</div>`
-    : `<div class="brand"><span class="hanko" aria-hidden="true">旅</span>יפן 2026</div><div class="status">4–20.11.2026 · ${status}</div>`;
+    : `<div class="brand"><span class="hanko" aria-hidden="true">旅</span>יפן 2026</div><div class="status">4–21.11.2026 · ${status}</div>`;
 }
 
 /* ---------- views ---------- */
@@ -2375,7 +2381,7 @@ function dayRow(d){
 
 function viewRoute(){
   const pre = DAYS.filter(d => d.ch === 0);
-  let h = `<section class="view stack"><div><div class="eyebrow">17 ימים · 16 לילות · 5 פרקים</div><h1>המסלול</h1></div>`;
+  let h = `<section class="view stack"><div><div class="eyebrow">19 ימים · 18 לילות · 5 פרקים</div><h1>המסלול</h1></div>`;
   h += `<div class="chap" data-c="0">${pre.map(dayRow).join('')}</div>`;
   CHAPTERS.forEach(c => {
     const days = DAYS.filter(d => d.ch === c.id);
@@ -2419,7 +2425,8 @@ const AREAS = {
   '1117':[['אראשיאמה','Arashiyama, Kyoto'],['Sanjo','Sanjo, Kyoto']],
   '1118':[['Nishiki','Nishiki Market, Kyoto'],['Nanzenji','Nanzenji, Kyoto'],['Sanjo','Sanjo, Kyoto']],
   '1119':[['אסאקוסה','Asakusa, Tokyo'],['Kappabashi','Kappabashi, Tokyo'],['אואנו','Ueno, Tokyo']],
-  '1120':[['אואנו','Ueno, Tokyo'],['אקיהברה','Akihabara, Tokyo'],['גינזה','Ginza, Tokyo']]
+  '1120':[['אואנו','Ueno, Tokyo'],['אקיהברה','Akihabara, Tokyo'],['גינזה','Ginza, Tokyo']],
+  '1121':[['אואנו','Ueno, Tokyo'],['Ameyoko','Ameyoko, Tokyo']]
 };
 const QTYPES = [['מסעדות','restaurants'],['ראמן','ramen'],['סושי','sushi'],['איזקאיה','izakaya'],['קפה','cafe'],['מתוקים','dessert']];
 function foodDays(s){ const m = String(s).match(/(\d+)(?:\s*[–-]\s*(\d+))?\.11/); if(!m) return []; const a = +m[1], b = m[2] ? +m[2] : a; const r = []; for(let i=a;i<=b;i++) r.push(i); return r; }
@@ -2508,7 +2515,7 @@ function viewToday(){
   const td = todayDay();
   if (td) return viewDay(td.id);
   const n = daysUntil();
-  if (n <= 0 && tokyoNow().date > '2026-11-20') {
+  if (n <= 0 && tokyoNow().date > '2026-11-21') {
     return `<section class="view stack"><h1>ברוכים השבים</h1><p class="muted">המסלול כולו נשאר כאן, בלשונית מסלול.</p></section>`;
   }
   const s = checkStats();
@@ -2518,7 +2525,7 @@ function viewToday(){
       <div class="body"><div class="eyebrow">המראה 3.11 · 15:10 · תל אביב</div>
       <div class="count num">${Math.max(n,0)}<small>ימים לטיסה</small></div>
       <div class="strip" aria-hidden="true">${[1,2,3,4,5].map(c => `<span data-c="${c}"></span>`).join('')}</div>
-      <p class="muted" style="margin:10px 0 0">טוקיו, האקונה, ההרים, קיוטו וחזרה לטוקיו. 17 ימים, 7 מלונות, רכב אחד ורכבת מהירה אחת.</p></div></div>
+      <p class="muted" style="margin:10px 0 0">טוקיו, האקונה, ההרים, קיוטו וחזרה לטוקיו. 19 ימים, 7 מלונות, רכב אחד ורכבת מהירה אחת.</p></div></div>
     <button type="button" class="card" data-tab="lists" style="text-align:right;cursor:pointer">
       <div style="display:flex;justify-content:space-between"><h3>מה עוד להזמין ולבדוק</h3><span class="num muted">${s.done}/${s.total}</span></div>
       <div class="progress"><i style="width:${Math.round(100*s.done/s.total)}%"></i></div></button>
@@ -2567,7 +2574,7 @@ function viewLists(){
     <dt>הזמנה</dt><dd>במייל ההזמנה</dd>
     <dt class="num">3.11</dt><dd>תל אביב 15:10 → דובאי 20:15 · המשך 22:45</dd>
     <dt class="num">4.11</dt><dd>נחיתה בטוקיו 13:10</dd>
-    <dt class="num">20.11</dt><dd>טוקיו 21:30 → דובאי 04:40 · המשך 06:15 → תל אביב 08:05</dd></dl></div>
+    <dt class="num">21.11</dt><dd>טוקיו 17:30 → דובאי → תל אביב (שעות ההמשך לפי כרטיס הטיסה החדש)</dd></dl></div>
 
   <div class="card"><h3>הרכב</h3><dl class="kv" style="margin:10px 0 0">
     <dt>רכב</dt><dd>Toyota NOAH Hybrid · W2</dd>
